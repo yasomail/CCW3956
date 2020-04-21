@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance">
+    <sp_instance action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <class_name/>
+        <color>default</color>
+        <css/>
+        <glyph/>
+        <id/>
+        <order>1</order>
+        <roles/>
+        <short_description/>
+        <size>md</size>
+        <sp_column display_value="1">4eb1a779db101010885a7b6039961938</sp_column>
+        <sp_widget display_value="Card List Simple">b57f97f5db101010885a7b60399619e5</sp_widget>
+        <sys_class_name>sp_instance</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-04-21 20:21:10</sys_created_on>
+        <sys_id>a2c12779db101010885a7b6039961989</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Reusable Widgets" source="x_snc_reusable_wid">cbefa4faf41232007f44717f642a22b4</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Reusable Widgets">cbefa4faf41232007f44717f642a22b4</sys_scope>
+        <sys_update_name>sp_instance_a2c12779db101010885a7b6039961989</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-04-21 20:22:04</sys_updated_on>
+        <title/>
+        <url/>
+        <widget_parameters><![CDATA[{
+	"ttitle": {
+		"value": "Active Incidents",
+		"displayValue": "Active Incidents"
+	},
+	"table": {
+		"value": "incident",
+		"displayValue": "incident"
+	},
+	"filter": {
+		"value": "active=true",
+		"displayValue": "active=true"
+	},
+	"fields": {
+		"value": "assigned_to,impact,incident_state,priority",
+		"displayValue": "assigned_to,impact,incident_state,priority"
+	}
+}]]></widget_parameters>
+    </sp_instance>
+    <sys_translated_text action="delete_multiple" query="documentkey=a2c12779db101010885a7b6039961989"/>
+</record_update>

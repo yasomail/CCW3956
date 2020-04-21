@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<record_update table="sp_portal">
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_portal">
     <sp_portal action="INSERT_OR_UPDATE">
         <css_variables/>
         <default>false</default>
@@ -31,6 +30,7 @@
         <sys_updated_on>2017-04-26 19:23:57</sys_updated_on>
         <theme/>
         <title>Playground</title>
+        <ts_index_group/>
         <url_suffix>playground</url_suffix>
     </sp_portal>
     <sys_translated_text action="delete_multiple" query="documentkey=bdb5b87ef41232007f44717f642a2219"/>

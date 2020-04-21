@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function() {
+  /* widget controller */
+  var c = this;
+	
+	if (c.options.fields)
+		c.cardFields = c.options.fields.split(",");
+	c.getPrimaryField = function getPrimaryField(row){
+		return row[c.data.primaryField];
+	};
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.fields {
+  $dl-horizontal-offset: 120px;
+  dt {
+    font-weight: normal;
+    color: $text-muted;
+    float: left;
+    width: ($dl-horizontal-offset - 20);
+    clear: left;
+    text-align: right;
+    @include text-overflow;
+  }
+  dd {
+    @include clearfix;
+    margin-left: $dl-horizontal-offset;
+  }
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>card_list_simple</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Card List Simple</name>
+        <option_schema>[{"hint":"The title for the card list","name":"ttitle","section":"other","label":"Ttitle","type":"string"},{"hint":"The table to query","name":"table","section":"other","label":"Table","type":"string"},{"hint":"The filter query string","name":"filter","section":"other","label":"Filter","type":"string"},{"name":"fields","section":"other","default_value":"Comma separated list of field names to include on the cards","label":"Fields","type":"string"}]</option_schema>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+
+	if (options.table) {
+		data.rows = [];
+		var gr = new GlideRecord(options.table);
+		gr.addEncodedQuery(options.filter);
+		gr.setLimit(25);
+		gr.query();
+		if (!data.primaryField) {
+			data.primaryField = gr.getDisplayName();
+		}
+		var fields = "sys_id," + data.primaryField + "," + options.fields;
+		data.fields = $sp.getFieldsObject(gr, fields);
+		while(gr.next()) {
+			var row = {};
+			$sp.getRecordDisplayValues(row, gr, fields);
+			data.rows.push(row);
+		}
+	}
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-04-21 20:11:01</sys_created_on>
+        <sys_id>b57f97f5db101010885a7b60399619e5</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Card List Simple</sys_name>
+        <sys_package display_value="Reusable Widgets" source="x_snc_reusable_wid">cbefa4faf41232007f44717f642a22b4</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Reusable Widgets">cbefa4faf41232007f44717f642a22b4</sys_scope>
+        <sys_update_name>sp_widget_b57f97f5db101010885a7b60399619e5</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-04-21 20:18:14</sys_updated_on>
+        <template><![CDATA[<div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <span class="h3 panel-title">{{::c.options.title}}</span>
+    </div>
+    <div class="panel-body">
+      <div class="list-group" ng-repeat="row in c.data.rows track by row.sys_id">
+        <a href="javascript:void(0)" class="list-group-item">
+          <div class="h4 list-group-item-heading">{{c.getPrimaryField(row)}}</div>
+          <dl class="fields">
+            <span ng-repeat="f in c.cardFields"><dt>{{c.data.fields[f].label}}</dt><dd>{{row[f]}}</dd></span>
+          </dl>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>
